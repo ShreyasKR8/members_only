@@ -1,0 +1,33 @@
+{
+  "name": "members_only",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/ShreyasKR8/members_only#readme",
+  "bugs": {
+    "url": "https://github.com/ShreyasKR8/members_only/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ShreyasKR8/members_only.git"
+  },
+  "license": "ISC",
+  "author": "SKR",
+  "type": "commonjs",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "connect-pg-simple": "^10.0.0",
+    "dotenv": "^17.4.2",
+    "ejs": "^6.0.1",
+    "express": "^5.2.1",
+    "express-session": "^1.19.0",
+    "express-validator": "^7.3.2",
+    "passport": "^0.7.0",
+    "passport-local": "^1.0.0",
+    "pg": "^8.21.0"
+  }
+}
