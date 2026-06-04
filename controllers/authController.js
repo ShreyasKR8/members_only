@@ -29,7 +29,7 @@ const validateUser = [
 ];
 
 const validateEmailNotInUse = body('email').custom(async value => {
-    const user = await db.findUserByEmail(value);
+    const user = await db.getUserByEmail(value);
     if (user) {
         throw new Error('E-mail already in use');
     }
@@ -74,15 +74,16 @@ exports.registerPost = [
                 10
             );
 
-            await pool.query(
-                `INSERT INTO users(first_name, last_name, username, 
-                email, password_hash)
-                VALUES($1, $2, $3, $4, $5)`,
-                [req.body.firstname, req.body.lastname,
-                req.body.username, req.body.email,
-                    hashedPassword
-                ]
-            )
+            const user = {
+                firstName: req.body.firstname,
+                lastName: req.body.lastname,
+                userName: req.body.username,
+                email: req.body.email,
+                password: hashedPassword
+            }
+
+            await db.createUser(user);
+
             res.redirect("/");
         } catch (err) {
             console.log(err);

@@ -1,12 +1,18 @@
 const pool = require("./pool");
 
-exports.postUser = async () => {
+exports.createUser = async ({ firstName, lastName, userName,
+    email, password }) => {
+    pool.query(
+        `INSERT INTO users(first_name, last_name, username, 
+            email, password_hash)
+            VALUES($1, $2, $3, $4, $5)`,
+        [firstName, lastName, userName, email, password]
+    )
+};
 
-}
-
-exports.findUserByEmail = async (email) => {
+exports.getUserByEmail = async (email) => {
     const { rows } = await pool.query(
-        `SELECT username
+        `SELECT *
         FROM users
         WHERE email = $1`,
         [email]
