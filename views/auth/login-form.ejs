@@ -1,6 +1,22 @@
-<div class="register-form">
-    <h1>Login</h1>
-    <form method="POST">
-        <label
-    </form>
-</div>
+<!-- <link rel="stylesheet" href="/css/styles.css"> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Log In</title>
+</head>
+<body>
+    <div class="login-div">
+        <h1>Log in</h1>
+        <form action="/auth/login" method="POST">
+            <label for="username">Username</label>
+            <input id="username" name="username" placeholder="Username" type="text" required />
+            <label for="password">Password</label>
+            <input id="password" name="password" type="password" required />
+            <button type="submit" class="btn-primary">Log In</button>
+        </form>
+        <p>New User? <a href="/auth/register">Sign up</a></p>
+    </div>
+</body>
+</html>

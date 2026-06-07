@@ -1,7 +1,6 @@
 const pool = require('../db/pool');
 const db = require('../db/queries');
 const bcrypt = require("bcryptjs");
-
 const { body, validationResult } = require("express-validator");
 
 const alphaErr = "must only contain letters.";
@@ -84,8 +83,23 @@ exports.registerPost = [
 
             await db.createUser(user);
 
-            res.redirect("/");
+            res.redirect("/auth/login");
         } catch (err) {
             console.log(err);
         }
-    }];
+    }
+];
+
+exports.loginGet = (req, res) => {
+    res.render("auth/login-form");
+};
+
+exports.logoutGet = (req, res, next) => {
+    req.logout((err) => {
+        if (err) {
+            return next(err);
+        }
+
+        res.redirect("/");
+    });
+};
