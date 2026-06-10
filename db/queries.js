@@ -42,3 +42,12 @@ exports.getUserByUsername = async (username) => {
 
     return rows[0];
 }
+
+exports.makeMember = async (userId) => {
+    await pool.query(`
+        UPDATE users
+        SET is_member = TRUE
+        WHERE id = $1`,
+        [userId]
+    );
+}

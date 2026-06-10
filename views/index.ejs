@@ -10,6 +10,10 @@
     <h1>Members only</h1>
     <a href="auth/register">Register</a>
     <a href="auth/login">Login</a>
+    <% if(locals.currentUser) { %>
+        <a href="/join-club">Join the club</a>
+    <% } %>
+    
 </body>
 
 </html>

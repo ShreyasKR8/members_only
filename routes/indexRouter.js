@@ -5,4 +5,7 @@ const indexRouter = Router();
 
 indexRouter.get('/', indexController.showHomePage);
 
+indexRouter.get('/join-club', indexController.joinClubGet);
+indexRouter.post('/join-club', indexController.joinClubPost);
+
 module.exports = indexRouter;

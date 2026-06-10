@@ -35,6 +35,10 @@ app.use(express.urlencoded({ extended: true }));
 //passport middlewares
 app.use(session(sessionConfig));
 app.use(passport.session());
+app.use((req, res, next) => {
+  res.locals.currentUser = req.user;
+  next();
+});
 
 //set up ejs view engine and path
 app.set('views', path.join(__dirname, 'views'));
