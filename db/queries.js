@@ -16,7 +16,7 @@ exports.getUserById = async (userId) => {
         WHERE id = $1`,
         [userId]
     );
-    console.log(rows[0]);
+    // console.log(rows[0]);
 
     return rows[0];
 }
@@ -38,7 +38,7 @@ exports.getUserByUsername = async (username) => {
         WHERE username = $1`,
         [username]
     );
-    console.log(rows[0]);
+    // console.log(rows[0]);
 
     return rows[0];
 }
