@@ -3,6 +3,7 @@ require("./config/passport");
 const express = require("express");
 const indexRouter = require("./routes/indexRouter");
 const authRouter = require("./routes/authRouter");
+const postsRouter = require('./routes/postsRouter');
 const path = require('node:path');
 const session = require("express-session");
 const pgSession = require("connect-pg-simple")(session);
@@ -47,6 +48,7 @@ app.set('view engine', 'ejs');
 // set up router middlewares
 app.use('/', indexRouter)
 app.use('/auth', authRouter);
+app.use('/posts', postsRouter);
 
 app.listen(PORT, () => {
     console.log(`server listening at ${PORT}`);

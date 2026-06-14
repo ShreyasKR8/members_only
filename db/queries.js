@@ -51,3 +51,16 @@ exports.makeMember = async (userId) => {
         [userId]
     );
 }
+
+exports.createPost = async (title, content, userId) => {
+    await pool.query(`
+        INSERT INTO messages(title, content, user_id)
+        VALUES($1, $2, $3)`,
+        [title, content, userId]
+    );
+};
+
+// getPosts()
+// getPostById()
+// updatePost()
+// deletePost()
