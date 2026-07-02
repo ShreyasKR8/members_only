@@ -1,7 +1,8 @@
 const db = require('../db/queries');
 
 exports.showHomePage = async (req, res) => {
-    res.render('index');
+    const posts = await db.getAllPosts();
+    res.render('index', { posts: posts});
 }
 
 exports.joinClubGet = async (req, res) => {

@@ -18,6 +18,18 @@
         <a href="auth/register">Register</a>
         <a href="auth/login">Login</a>
     <% } %>
+    <div class="posts">
+        <% posts.map(post => { %>
+            <% if(locals.currentUser !=null) { %>
+                <% if(locals.currentUser.is_member) { %>
+                    <h3><%= post.username %></h3>
+                <% } %>
+                <p><%= post.title %></p>
+                <p><%= post.content %></p>
+                <p><%= post.created_at %></p>
+            <% } %>
+        <% }) %>
+    </div>
 
 </body>
 

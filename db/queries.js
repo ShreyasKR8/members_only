@@ -60,7 +60,17 @@ exports.createPost = async (title, content, userId) => {
     );
 };
 
-// getPosts()
+
+exports.getAllPosts = async () => {
+    const { rows } = await pool.query(`
+        SELECT m.title, m.content, m.created_at, u.username 
+        FROM users u INNER JOIN messages m 
+        ON u.id=m.user_id;`
+    );
+
+    return rows;
+};
+
 // getPostById()
 // updatePost()
 // deletePost()
