@@ -63,9 +63,10 @@ exports.createPost = async (title, content, userId) => {
 
 exports.getAllPosts = async () => {
     const { rows } = await pool.query(`
-        SELECT m.title, m.content, m.created_at, u.username 
+        SELECT m.id, m.title, m.content, m.created_at, u.username 
         FROM users u INNER JOIN messages m 
-        ON u.id=m.user_id;`
+        ON u.id = m.user_id
+        ORDER BY m.created_at DESC;`
     );
 
     return rows;
