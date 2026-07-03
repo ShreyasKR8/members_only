@@ -4,17 +4,37 @@
 <head>
     <meta charset="UTF-8">
     <title>New Post</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
 
 <body>
-    <h1>Write a Post</h1>
-    <form action="/posts/new" method="POST">
-        <label for="title">Title: </label>
-        <input type="text" name="title" id="title">
-        <label for="content">Content: </label>
-        <textarea name="content" id="content"></textarea>
-        <button type="submit">Post</button>
-    </form>
+    <main class="auth-page">
+        <section class="auth-card compact">
+            <div class="auth-header">
+                <p class="eyebrow">New message</p>
+                <h1 class="page-title">Write a Post</h1>
+                <p class="page-copy">Keep it simple: a title, a message, and it goes straight onto the board.</p>
+            </div>
+
+            <form action="/posts/new" method="POST">
+                <div class="form-grid">
+                    <div class="field">
+                        <label for="title">Title</label>
+                        <input type="text" name="title" id="title" placeholder="Give your post a clear title" required>
+                    </div>
+                    <div class="field">
+                        <label for="content">Content</label>
+                        <textarea name="content" id="content" placeholder="What do you want to say?" required></textarea>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button class="btn btn-primary" type="submit">Post message</button>
+                    <a class="btn btn-secondary" href="/">Cancel</a>
+                </div>
+            </form>
+        </section>
+    </main>
 </body>
 
 </html>

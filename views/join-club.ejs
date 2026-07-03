@@ -4,18 +4,32 @@
 <head>
     <meta charset="UTF-8">
     <title>Members only</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
 
 <body>
-    <h1>Join the Club</h1>
-    <p>One question stands between you and membership.</p>
-    <p>I sleep most of the day, knock things off tables for no reason, 
-        and secretly run the internet. What am I?</p>
-    <form method="POST" action="join-club">
-        <label for="passcode">Answer: </label>
-        <input id="passcode" type="text" name="passcode" required/>
-        <button type="submit">Join</button>
-    </form>
-    <a href="/">Back to Home</a>
+    <main class="auth-page">
+        <section class="panel">
+            <p class="eyebrow">Membership test</p>
+            <h1 class="page-title">Join the Club</h1>
+            <p class="page-copy">One question stands between you and the secret author list.</p>
+
+            <div class="question-box">
+                I sleep most of the day, knock things off tables for no reason, and secretly run the internet. What am I?
+            </div>
+
+            <form method="POST" action="join-club">
+                <div class="field">
+                    <label for="passcode">Answer</label>
+                    <input id="passcode" type="text" name="passcode" placeholder="Type your answer here" required />
+                </div>
+                <div class="form-actions">
+                    <button class="btn btn-primary" type="submit">Join now</button>
+                    <a class="btn btn-secondary" href="/">Back to home</a>
+                </div>
+            </form>
+        </section>
+    </main>
 </body>
 </html>

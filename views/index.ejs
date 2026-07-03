@@ -4,33 +4,95 @@
 <head>
     <meta charset="UTF-8">
     <title>Members only</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
 
 <body>
-    <h1>Members only</h1>
-    <% if(locals.currentUser !=null) { %>
-        <% if(!locals.currentUser.is_member) { %>
-            <a href="/join-club">Join the club</a>
-        <% } %>
-        <a href="/posts/new/">Post a message</a>
-        <a href="auth/logout">Logout</a>
-    <% } else { %>
-        <a href="auth/register">Register</a>
-        <a href="auth/login">Login</a>
-    <% } %>
-    <div class="posts">
-        <% posts.map(post => { %>
-            <% if(locals.currentUser !=null) { %>
-                <% if(locals.currentUser.is_member) { %>
-                    <h3><%= post.username %></h3>
+    <main class="page-shell">
+        <header class="topbar hero-card">
+            <div class="brand">
+                <span class="brand-mark">Private board</span>
+                <span class="brand-title">Members Only</span>
+            </div>
+            <nav class="nav-links">
+                <% if (locals.currentUser != null) { %>
+                    <% if (!locals.currentUser.is_member) { %>
+                        <a class="link-pill secondary" href="/join-club">Join the club</a>
+                    <% } %>
+                    <a class="link-pill primary" href="/posts/new/">Post a message</a>
+                    <a class="link-pill secondary" href="/auth/logout">Logout</a>
+                <% } else { %>
+                    <a class="link-pill secondary" href="/auth/register">Register</a>
+                    <a class="link-pill primary" href="/auth/login">Login</a>
                 <% } %>
-                <p><%= post.title %></p>
-                <p><%= post.content %></p>
-                <p><%= post.created_at %></p>
-            <% } %>
-        <% }) %>
-    </div>
+            </nav>
+        </header>
 
+        <section class="hero-card">
+            <div>
+                <p class="eyebrow">Quietly exclusive</p>
+                <h1 class="hero-title">A small message board with hidden identities.</h1>
+                <p class="hero-copy">
+                    Anyone can read the board, members can reveal authorship, and the whole thing stays intentionally simple so the database and role logic are the stars.
+                </p>
+                <div class="hero-actions">
+                    <% if (locals.currentUser != null) { %>
+                        <a class="btn btn-primary" href="/posts/new/">Write a post</a>
+                        <% if (!locals.currentUser.is_member) { %>
+                            <a class="btn btn-secondary" href="/join-club">Unlock member status</a>
+                        <% } %>
+                    <% } else { %>
+                        <a class="btn btn-primary" href="/auth/register">Create an account</a>
+                        <a class="btn btn-secondary" href="/auth/login">I already have one</a>
+                    <% } %>
+                </div>
+            </div>
+            <aside class="membership-badge">
+                <span class="badge-label">
+                    <%= locals.currentUser ? (locals.currentUser.is_member ? "Member access" : "Guest access") : "Visitor access" %>
+                </span>
+                <p class="badge-text">
+                    <% if (locals.currentUser && locals.currentUser.is_member) { %>
+                        You can see who wrote each post and join the inner circle atmosphere.
+                    <% } else if (locals.currentUser) { %>
+                        You’re inside, but the author names stay hidden until you answer the club question.
+                    <% } else { %>
+                        You can browse every post as a guest. Sign in and upgrade to membership later to uncover the authors behind them.
+                    <% } %>
+                </p>
+            </aside>
+        </section>
+
+        <section>
+            <div class="section-header">
+                <div>
+                    <h2 class="section-title">Recent posts</h2>
+                    <p class="meta-text">Titles and messages are visible to everyone. Member names appear only for club members.</p>
+                </div>
+            </div>
+
+            <% if (posts.length > 0) { %>
+                <div class="posts-grid">
+                    <% posts.forEach(post => { %>
+                        <article class="post-card">
+                                <% if (locals.currentUser != null && locals.currentUser.is_member) { %>
+                                    <h3 class="post-author"><%= post.username %></h3>
+                                <% } %>
+                                <h2><%= post.title %></h2>
+                                <p class="post-content"><%= post.content %></p>
+                                <p class="post-meta"><%= post.created_at %></p>
+                        </article>
+                    <% }) %>
+                    </div>
+                <% } else { %>
+                    <div class="empty-state panel">
+                        <h2 class="section-title">No posts yet</h2>
+                        <p class="page-copy">Be the first person to start the conversation.</p>
+                    </div>
+                <% } %>
+        </section>
+    </main>
 </body>
 
 </html>

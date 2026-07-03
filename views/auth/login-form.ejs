@@ -1,22 +1,40 @@
-<!-- <link rel="stylesheet" href="/css/styles.css"> -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>Log In</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
-    <div class="login-div">
-        <h1>Log in</h1>
-        <form action="/auth/login" method="POST">
-            <label for="username">Username</label>
-            <input id="username" name="username" placeholder="Username" type="text" required />
-            <label for="password">Password</label>
-            <input id="password" name="password" type="password" required />
-            <button type="submit" class="btn-primary">Log In</button>
-        </form>
-        <p>New User? <a href="/auth/register">Sign up</a></p>
-    </div>
+    <main class="auth-page">
+        <section class="auth-card">
+            <div class="auth-header">
+                <p class="eyebrow">Welcome back</p>
+                <h1 class="page-title">Log in</h1>
+                <p class="page-copy">Step back into the board and pick up the conversation.</p>
+            </div>
+
+            <form action="/auth/login" method="POST">
+                <div class="form-grid">
+                    <div class="field">
+                        <label for="username">Username</label>
+                        <input id="username" name="username" placeholder="Username" type="text" required />
+                    </div>
+                    <div class="field">
+                        <label for="password">Password</label>
+                        <input id="password" name="password" type="password" placeholder="Password" required />
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Log In</button>
+                    <a class="btn btn-secondary" href="/">Back to home</a>
+                </div>
+            </form>
+
+            <p class="meta-text">New here? <a href="/auth/register">Create an account</a></p>
+        </section>
+    </main>
 </body>
 </html>

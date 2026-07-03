@@ -4,27 +4,54 @@
 <head>
     <meta charset="UTF-8">
     <title>Sign Up</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
 
 <body>
-    <div class="register-form">
-        <h1>Register</h1>
-        <form method="POST" action="register">
-            <label for="firstname">First Name</label>
-            <input id="firstname" type="text" name="firstname" required />
-            <label for="lastname">Last Name</label>
-            <input id="lastname" name="lastname" type="text" required />
-            <label for="username">User Name</label>
-            <input id="username" name="username" type="text" required />
-            <label for="email">Email</label>
-            <input id="email" name="email" type="email" required />
-            <label for="password">Password</label>
-            <input id="password" name="password" type="password" required />
-            <label for="confirmpassword">Confirm Password</label>
-            <input id="confirmpassword" name="confirmpassword" type="password" required/>
-            <button type="submit">Sign up</button>
-        </form>
-    </div>
+    <main class="auth-page">
+        <section class="auth-card compact">
+            <div class="auth-header">
+                <p class="eyebrow">Create access</p>
+                <h1 class="page-title">Register</h1>
+                <p class="page-copy">Make your account first, then unlock member status from inside the app.</p>
+            </div>
+
+            <form method="POST" action="register">
+                <div class="form-grid two-column">
+                    <div class="field">
+                        <label for="firstname">First Name</label>
+                        <input id="firstname" type="text" name="firstname" required />
+                    </div>
+                    <div class="field">
+                        <label for="lastname">Last Name</label>
+                        <input id="lastname" name="lastname" type="text" required />
+                    </div>
+                    <div class="field full-width">
+                        <label for="username">User Name</label>
+                        <input id="username" name="username" type="text" required />
+                    </div>
+                    <div class="field full-width">
+                        <label for="email">Email</label>
+                        <input id="email" name="email" type="email" required />
+                    </div>
+                    <div class="field">
+                        <label for="password">Password</label>
+                        <input id="password" name="password" type="password" required />
+                    </div>
+                    <div class="field">
+                        <label for="confirmpassword">Confirm Password</label>
+                        <input id="confirmpassword" name="confirmpassword" type="password" required />
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button class="btn btn-primary" type="submit">Sign up</button>
+                    <a class="btn btn-secondary" href="/">Back to home</a>
+                </div>
+            </form>
+        </section>
+    </main>
 </body>
 
 </html>
