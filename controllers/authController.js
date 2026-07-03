@@ -78,7 +78,8 @@ exports.registerPost = [
                 lastName: req.body.lastname,
                 userName: req.body.username,
                 email: req.body.email,
-                password: hashedPassword
+                password: hashedPassword,
+                isAdmin: req.body.admin
             }
 
             await db.createUser(user);

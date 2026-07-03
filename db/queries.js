@@ -1,12 +1,12 @@
 const pool = require("./pool");
 
 exports.createUser = async ({ firstName, lastName, userName,
-    email, password }) => {
+    email, password, isAdmin }) => {
     pool.query(
         `INSERT INTO users(first_name, last_name, username, 
-            email, password_hash)
-            VALUES($1, $2, $3, $4, $5)`,
-        [firstName, lastName, userName, email, password]
+            email, password_hash, is_admin)
+            VALUES($1, $2, $3, $4, $5, $6)`,
+        [firstName, lastName, userName, email, password, isAdmin]
     )
 };
 

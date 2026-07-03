@@ -329,6 +329,35 @@ textarea {
   resize: vertical;
 }
 
+.checkbox-field {
+  display: block;
+}
+
+.checkbox-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.9rem 1rem;
+  border: 1px solid rgba(67, 47, 24, 0.16);
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.92);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.checkbox-row input[type="checkbox"] {
+  width: 1.05rem;
+  height: 1.05rem;
+  margin: 0;
+  accent-color: var(--brand);
+  cursor: pointer;
+}
+
+.checkbox-row:has(input[type="checkbox"]:focus-visible) {
+  outline: 3px solid rgba(182, 84, 45, 0.18);
+  border-color: var(--brand);
+}
+
 .field input:focus,
 .field textarea:focus {
   outline: 3px solid rgba(182, 84, 45, 0.18);
