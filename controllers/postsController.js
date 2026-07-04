@@ -43,3 +43,14 @@ exports.createPost = [validateTitle, validateContent,
         res.redirect('/');
     }
 ];
+
+exports.deletePost = async (req, res) => {
+    const postId = req.params.id;
+    if(Number.isNaN(postId)) {
+        return res.status(400).send("Invalid post id");
+    }
+
+    await db.deletePost(postId);
+
+    res.redirect('/');
+};

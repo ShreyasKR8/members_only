@@ -72,6 +72,13 @@ exports.getAllPosts = async () => {
     return rows;
 };
 
+exports.deletePost = async (postId) => {
+    pool.query(`
+        DELETE FROM messages
+        WHERE id = $1`,
+        [postId]
+    );
+}
+
 // getPostById()
 // updatePost()
-// deletePost()
