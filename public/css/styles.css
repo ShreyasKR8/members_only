@@ -41,6 +41,7 @@ button,
 input,
 textarea {
   font: inherit;
+  cursor: pointer;
 }
 
 .page-shell {
