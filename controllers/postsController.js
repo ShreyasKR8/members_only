@@ -8,7 +8,6 @@ const validateTitle = [
         .withMessage("Title cannot be empty")
         .isLength({ min: 1, max: 50 })
         .withMessage(`Title must be under 50 characters.`)
-        .escape()
 ];
 
 const validateContent = [
@@ -18,7 +17,6 @@ const validateContent = [
         .withMessage("Post content cannot be empty")
         .isLength({ min: 1, max: 150 })
         .withMessage(`Post content must be under 150 characters.`)
-        .escape()
 ];
 
 exports.getNewPost = async (req, res) => {
