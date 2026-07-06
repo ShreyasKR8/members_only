@@ -154,9 +154,15 @@ textarea {
   border: 1px solid rgba(182, 84, 45, 0.18);
 }
 
+.badge-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
 .badge-label {
   display: inline-block;
-  margin-bottom: 0.75rem;
   padding: 0.38rem 0.65rem;
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.75);
@@ -165,6 +171,13 @@ textarea {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.12em;
+}
+
+.badge-label-admin {
+  padding: 0.28rem 0.55rem;
+  background: rgba(182, 84, 45, 0.12);
+  border: 1px solid rgba(182, 84, 45, 0.24);
+  font-size: 0.68rem;
 }
 
 .badge-text {

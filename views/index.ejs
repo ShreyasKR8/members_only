@@ -49,9 +49,14 @@
                 </div>
             </div>
             <aside class="membership-badge">
-                <span class="badge-label">
-                    <%= locals.currentUser ? (locals.currentUser.is_member ? "Member access" : "Guest access") : "Visitor access" %>
-                </span>
+                <div class="badge-row">
+                    <span class="badge-label">
+                        <%= locals.currentUser ? (locals.currentUser.is_member ? "Member access" : "Guest access") : "Visitor access" %>
+                    </span>
+                    <% if (locals.currentUser && locals.currentUser.is_admin) { %>
+                        <span class="badge-label badge-label-admin">Admin</span>
+                    <% } %>
+                </div>
                 <p class="badge-text">
                     <% if (locals.currentUser && locals.currentUser.is_member) { %>
                         You can see who wrote each post and join the inner circle atmosphere.
