@@ -61,7 +61,7 @@
     </main>
     <script>
         const registerForm = document.getElementById("register-form");
-        const serverErrors = <%- JSON.stringify((errors || []).map((error) => error.msg)) %>;
+        const serverErrors = JSON.parse('<%- JSON.stringify((errors || []).map((error) => error.msg)).replace(/</g, "\\\\u003c") %>');
 
         if (serverErrors.length > 0) {
             alert(serverErrors.join("\n"));

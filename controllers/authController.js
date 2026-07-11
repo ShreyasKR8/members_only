@@ -74,14 +74,12 @@ exports.registerPost = [
         const errors = validationResult(req);
 
         if (!errors.isEmpty()) {
-            if (!errors.isEmpty()) {
-                console.log(errors.array());
+            console.log(errors.array());
 
-                return res.render('auth/register-form', {
-                    errors: errors.array(),
-                    formData: req.body,
-                });
-            }
+            return res.render('auth/register-form', {
+                errors: errors.array(),
+                formData: req.body,
+            });
         }
 
         next();
@@ -99,8 +97,8 @@ exports.registerPost = [
                 userName: req.body.username,
                 email: req.body.email,
                 password: hashedPassword,
-                isAdmin: req.body.admin
-            }
+                isAdmin: req.body.admin === 'yes',
+            };
 
             await db.createUser(user);
 
