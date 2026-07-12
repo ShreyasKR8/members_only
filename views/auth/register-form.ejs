@@ -18,7 +18,8 @@
                 <p class="page-copy">Make your account first, then unlock member status from inside the app.</p>
             </div>
 
-            <form method="POST" action="register" id="register-form" novalidate>
+            <form method="POST" action="register" id="register-form" novalidate
+                data-server-errors="<%= encodeURIComponent(JSON.stringify((errors || []).map((error) => error.msg))) %>">
                 <div class="form-grid two-column">
                     <div class="field">
                         <label for="firstname">First Name</label>
@@ -59,43 +60,7 @@
             </form>
         </section>
     </main>
-    <script>
-        const registerForm = document.getElementById("register-form");
-        const serverErrors = JSON.parse('<%- JSON.stringify((errors || []).map((error) => error.msg)).replace(/</g, "\\\\u003c") %>');
-
-        if (serverErrors.length > 0) {
-            alert(serverErrors.join("\n"));
-        }
-
-        registerForm.addEventListener("submit", (event) => {
-            const invalidFields = Array.from(registerForm.querySelectorAll(":invalid"));
-
-            if (invalidFields.length === 0) {
-                return;
-            }
-
-            event.preventDefault();
-
-            const messages = invalidFields.map((field) => {
-                const label = registerForm.querySelector(`label[for="${field.id}"]`);
-                const fieldName = label ? label.textContent.trim() : field.name;
-
-                if (field.validity.valueMissing) {
-                    return `${fieldName} is required.`;
-                }
-
-                if (field.validity.typeMismatch && field.type === "email") {
-                    return "Please enter a valid email address.";
-                }
-
-                return `${fieldName} is invalid.`;
-            });
-
-            alert([...new Set(messages)].join("\n"));
-            invalidFields[0].focus();
-            registerForm.reportValidity();
-        });
-    </script>
+    <script src="/js/register-form.js"></script>
     <footer class="site-footer">
         <a href="https://www.flaticon.com/free-icons/members" target="_blank" title="members icons">Members icons created by Irfansusanto20 - Flaticon</a>
     </footer>
